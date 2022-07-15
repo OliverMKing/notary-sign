@@ -1,0 +1,13 @@
+name: 'Sign image with notary v2 specifcation'
+description: 'Sign image with notary v2 specification'
+inputs:
+   annotate-namespace:
+      description: 'Annotate the target namespace'
+      required: false
+      default: true
+
+branding:
+   color: 'green'
+runs:
+   using: 'node16'
+   main: 'lib/index.js'
