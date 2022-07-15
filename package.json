@@ -10,7 +10,9 @@
       "format-check": "prettier --check ."
    },
    "dependencies": {
-      "@actions/core": "^1.2.6"
+      "@actions/core": "^1.2.6",
+      "@actions/tool-cache": "^2.0.1",
+      "@octokit/graphql": "^5.0.0"
    },
    "devDependencies": {
       "@types/jest": "^26.0.0",
