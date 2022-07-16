@@ -19,6 +19,14 @@ jobs:
       steps:
          - uses: actions/checkout@v2
 
+         - name: Install dependencies
+           run: |
+              rm -rf node_modules/
+              npm install
+
+         - name: Build action
+           run: npm run build
+
          - name: Start Registry
            run: docker run -d -p 5000:5000 ghcr.io/oras-project/registry:v1.0.0-rc
 
