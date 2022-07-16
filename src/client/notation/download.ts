@@ -1,4 +1,5 @@
 import {graphql} from '@octokit/graphql'
+import {createActionAuth} from '@octokit/auth-action'
 import * as core from '@actions/core'
 import * as toolCache from '@actions/tool-cache'
 import * as os from 'os'
@@ -65,7 +66,9 @@ export async function DownloadNotation(version: string) {
  * @returns the latest version
  */
 async function getLatestVersion(): Promise<string> {
-   const {repository} = await graphql(
+   const auth = createActionAuth()
+   const graphqlAuthenticated = graphql.defaults({request: {hook: auth.hook}})
+   const {repository} = await graphqlAuthenticated(
       `
          {
             repository(name: "${NOTATION_REPO}", owner: "${NOTATION_ORG}") {
