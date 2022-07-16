@@ -108,7 +108,9 @@ function getDownloadUrl(version: string): string {
       operatingSystem == WINDOWS ? ZIP_EXTENSION : TAR_GZ_EXTENSION
 
    const getUrl = (os: string, architecture: string) =>
-      `https://github.com/notaryproject/notation/releases/download/${version}/${version}_${os}_${architecture}.${compressExtension}`
+      `https://github.com/notaryproject/notation/releases/download/${version}/notation_${
+         version.charAt(0).toLowerCase() == 'v' ? version.substring(1) : version
+      }_${os}_${architecture}.${compressExtension}`
 
    switch (true) {
       case operatingSystem == LINUX && arch == ARM64:
