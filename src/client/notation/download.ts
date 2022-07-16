@@ -19,7 +19,7 @@ import {extract} from '../../util/file'
 const NOTATION_ORG = 'notaryproject'
 const NOTATION_REPO = 'notation'
 const SEMANTIC_VERSION_RE =
-   /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
+   /^v?([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
 const DEFAULT_NOTATION_VERSION = 'v0.9.0-alpha.1'
 const NOTATION_TOOL_NAME = 'notation'
 
