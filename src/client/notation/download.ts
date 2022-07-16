@@ -15,6 +15,7 @@ import {
    LATEST_VERSION_STR
 } from '../../constants'
 import {extract} from '../../util/file'
+import * as path from 'path'
 
 const NOTATION_ORG = 'notaryproject'
 const NOTATION_REPO = 'notation'
@@ -59,6 +60,11 @@ export async function DownloadNotation(version: string) {
    }
    fs.chmodSync(cachedPath, '755')
    core.endGroup()
+
+   if (!process.env['PATH'].startsWith(path.dirname(cachedPath))) {
+      core.info('Adding notation to path')
+      core.addPath(path.dirname(cachedPath))
+   }
 }
 
 /**
