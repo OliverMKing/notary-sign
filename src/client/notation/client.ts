@@ -3,6 +3,8 @@ import * as exec from '@actions/exec'
 
 const NOTATION_CMD = 'notation'
 
-class Notation implements INotarySigner {
-   sign: () => void
+export class Notation implements INotarySigner {
+   sign(): void {
+      exec.exec(NOTATION_CMD, ['--help'])
+   }
 }

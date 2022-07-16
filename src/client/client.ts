@@ -1,5 +1,6 @@
 import {DownloadNotation} from './notation/download'
 import {Client} from '../constants'
+import {Notation} from './notation/client'
 
 export interface INotarySigner {
    sign: () => void
@@ -12,7 +13,7 @@ export async function EnsureNotarySigner(
    switch (type) {
       case Client.Notation:
          await DownloadNotation(version)
-         return {sign: () => console.log('hello')}
+         return new Notation()
       default:
          throw Error(`No client implemented for type ${type}`)
    }
