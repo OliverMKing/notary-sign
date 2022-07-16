@@ -47,7 +47,7 @@ export async function DownloadNotation(version: string) {
    if (!cachedPath) {
       core.debug(`${NOTATION_TOOL_NAME} not cached`)
       const url = getDownloadUrl(version)
-      core.info('Downloading compressed')
+      core.info(`Downloading compressed from ${url}`)
       const downloadPath = await toolCache.downloadTool(url)
       core.info('Extracting from compressed')
       const extractedPath = await extract(downloadPath)
