@@ -32,9 +32,9 @@ export async function DownloadNotation(version: string) {
       try {
          // in try catch because graphql had rate limit
          version = await getLatestVersion()
-      } catch {
+      } catch (err) {
          core.warning(
-            `Couldn't find latest Notation version (rate limit possibly exceeded). Defaulting to ${DEFAULT_NOTATION_VERSION}`
+            `Couldn't find latest Notation version (error: ${err}). Defaulting to ${DEFAULT_NOTATION_VERSION}`
          )
          version = DEFAULT_NOTATION_VERSION
       }
