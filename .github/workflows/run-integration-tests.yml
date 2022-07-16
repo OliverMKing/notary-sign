@@ -34,3 +34,4 @@ jobs:
            uses: ./
            with:
               version: latest
+              token: ${{ secrets.GITHUB_TOKEN }}
