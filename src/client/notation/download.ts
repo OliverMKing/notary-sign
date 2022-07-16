@@ -59,14 +59,14 @@ export async function DownloadNotation(version: string) {
       )
 
       cachedPath = await toolCache.cacheFile(
-         extractedPath,
          toolPath,
+         path.basename(toolPath),
          NOTATION_TOOL_NAME,
          version
       )
    }
 
-   core.info('Adding to path')
+   core.info('Adding to path and giving permissions')
    fs.chmodSync(cachedPath, '755')
    core.addPath(path.dirname(cachedPath))
    core.endGroup()
