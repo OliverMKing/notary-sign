@@ -66,8 +66,9 @@ export async function DownloadNotation(version: string) {
       )
    }
 
-   core.info('Adding to path and giving permissions')
+   core.info('Giving executable permissions')
    fs.chmodSync(cachedPath, '755')
+   core.info('Adding to path')
    core.addPath(path.dirname(cachedPath))
    core.endGroup()
 }
