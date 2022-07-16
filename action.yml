@@ -1,10 +1,10 @@
 name: 'Sign image with notary v2 specifcation'
 description: 'Sign image with notary v2 specification'
 inputs:
-   annotate-namespace:
-      description: 'Annotate the target namespace'
+   version:
+      description: Notation version
       required: false
-      default: true
+      default: latest
 
 branding:
    color: 'green'
