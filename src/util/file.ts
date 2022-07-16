@@ -1,6 +1,8 @@
 import * as fs from 'fs'
 import * as toolCache from '@actions/tool-cache'
 import * as path from 'path'
+import * as os from 'os'
+import {WINDOWS} from '../constants'
 
 /**
  * extracts compressed files based on file extension
@@ -18,4 +20,13 @@ export async function extract(compressedPath: string): Promise<string> {
       default:
          return toolCache.extractTar(compressedPath)
    }
+}
+
+/**
+ * Gets the executable extension based on os
+ * @returns extension
+ */
+export function getExecutableExtension(): string {
+   const operatingSystem = os.type()
+   return operatingSystem == WINDOWS ? '.exe' : ''
 }

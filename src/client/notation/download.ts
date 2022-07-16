@@ -14,7 +14,7 @@ import {
    ZIP_EXTENSION,
    LATEST_VERSION_STR
 } from '../../constants'
-import {extract} from '../../util/file'
+import {extract, getExecutableExtension} from '../../util/file'
 import * as path from 'path'
 
 const NOTATION_ORG = 'notaryproject'
@@ -52,19 +52,23 @@ export async function DownloadNotation(version: string) {
       const downloadPath = await toolCache.downloadTool(url)
       core.info('Extracting from compressed')
       const extractedPath = await extract(downloadPath)
-      cachedPath = await toolCache.cacheDir(
+
+      const toolPath = path.join(
          extractedPath,
+         `NOTATION_TOOL_NAME${getExecutableExtension()}`
+      )
+
+      cachedPath = await toolCache.cacheFile(
+         extractedPath,
+         toolPath,
          NOTATION_TOOL_NAME,
          version
       )
    }
-   fs.chmodSync(cachedPath, '755')
-   core.endGroup()
 
-   if (!process.env['PATH'].startsWith(path.dirname(cachedPath))) {
-      core.info('Adding notation to path')
-      core.addPath(path.dirname(cachedPath))
-   }
+   fs.chmodSync(cachedPath, '755')
+   core.addPath(path.dirname(cachedPath))
+   core.endGroup()
 }
 
 /**
