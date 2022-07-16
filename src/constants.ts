@@ -5,7 +5,7 @@ export const WINDOWS = 'Windows_NT'
 
 // architectures
 export const ARM64 = 'arm64'
-export const AMD64 = '64'
+export const AMD64 = 'x64'
 
 // compression extensions
 export const TAR_GZ_EXTENSION = 'tar.gz'
