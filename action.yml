@@ -5,6 +5,9 @@ inputs:
       description: Notation version
       required: false
       default: latest
+   token:
+      description: GitHub token
+      required: true
 
 branding:
    color: 'green'
