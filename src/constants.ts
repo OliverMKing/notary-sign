@@ -14,4 +14,6 @@ export const ZIP_EXTENSION = 'zip'
 export const LATEST_VERSION_STR = 'latest'
 
 // client types
-export const NOTATION = 'notation'
+export enum Client {
+   Notation = 'notation'
+}

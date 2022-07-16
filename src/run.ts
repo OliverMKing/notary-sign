@@ -1,9 +1,10 @@
 import * as core from '@actions/core'
 import {EnsureNotarySigner} from './client/client'
-import {CLIENT_TYPE, CLIENT_VERSION} from './inputs'
+import {CLIENT_VERSION} from './inputs'
+import {Client} from './constants'
 
 export async function run() {
-   const client = await EnsureNotarySigner(CLIENT_TYPE, CLIENT_VERSION)
+   const client = await EnsureNotarySigner(Client.Notation, CLIENT_VERSION)
    client.sign()
 }
 
