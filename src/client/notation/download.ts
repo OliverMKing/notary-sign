@@ -55,7 +55,7 @@ export async function DownloadNotation(version: string) {
 
       const toolPath = path.join(
          extractedPath,
-         `NOTATION_TOOL_NAME${getExecutableExtension()}`
+         `${NOTATION_TOOL_NAME}${getExecutableExtension()}`
       )
 
       cachedPath = await toolCache.cacheFile(
