@@ -1,0 +1,23 @@
+name: Minikube Integration Tests
+on:
+   pull_request:
+      branches:
+         - main
+         - 'releases/*'
+   push:
+      branches:
+         - main
+         - 'releases/*'
+   workflow_dispatch:
+
+jobs:
+   run-integration-test:
+      name: Run Integration Tests
+      runs-on: ubuntu-latest
+      env:
+         KUBECONFIG: /home/runner/.kube/config
+      steps:
+         - uses: actions/checkout@v2
+
+         - name: Start Registry
+           run: docker run -d -p 5000:5000 ghcr.io/oras-project/registry:v1.0.0-rc
