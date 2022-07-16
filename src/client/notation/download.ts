@@ -83,9 +83,10 @@ async function getLatestVersion(): Promise<string> {
    )
    const releases = repository.releases.nodes.reverse()
    core.info(`releases: ${JSON.stringify(releases)}`)
-   const latestValidRelease = releases.find((release: {tagName: string}) =>
-      isValidVersion(release.tagName)
+   const latestValidRelease = releases.find(({tagName}) =>
+      isValidVersion(tagName)
    )
+   core.info(`latest releases: ${JSON.stringify(latestValidRelease)}`)
    return latestValidRelease.tagName
 }
 
